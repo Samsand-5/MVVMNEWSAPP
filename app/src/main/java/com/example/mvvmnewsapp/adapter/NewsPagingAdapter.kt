@@ -3,7 +3,6 @@ package com.example.mvvmnewsapp.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.ViewDataBinding
-import androidx.databinding.library.baseAdapters.BR
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -36,7 +35,7 @@ class NewsPagingAdapter(val adapterClicklListioners: AdapterClicklListioners) :
 
         val item = getItem(position)
 
-        holder.viewDataBinding.setVariable(BR.article, item)
+        holder.viewDataBinding.setVariable(BR)
 
         Glide.with(holder.viewDataBinding.root).load(item!!.urlToImage)
             .into(holder.viewDataBinding.root.image_list_item)
@@ -48,11 +47,8 @@ class NewsPagingAdapter(val adapterClicklListioners: AdapterClicklListioners) :
 
     }
 
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ): NewsPagingAdapter.MyViewHolder {
-        val binding = ListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsPagingAdapter.MyViewHolder {
+        val binding = ListItemBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return MyViewHolder(binding)
     }
 }
