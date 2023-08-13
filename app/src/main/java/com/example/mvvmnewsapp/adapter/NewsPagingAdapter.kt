@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.databinding.ViewDataBinding
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
+import androidx.databinding.library.baseAdapters.BR
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.mvvmnewsapp.databinding.ListItemBinding
@@ -35,7 +36,7 @@ class NewsPagingAdapter(val adapterClicklListioners: AdapterClicklListioners) :
 
         val item = getItem(position)
 
-        holder.viewDataBinding.setVariable(BR)
+        holder.viewDataBinding.setVariable(BR.article,item)
 
         Glide.with(holder.viewDataBinding.root).load(item!!.urlToImage)
             .into(holder.viewDataBinding.root.image_list_item)
